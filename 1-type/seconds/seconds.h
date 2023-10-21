@@ -31,7 +31,7 @@ int get_seconds(int seconds) {
 
 
 int get_magical_value(int seconds) {
-    int year = get_years(seconds);
+    int year = get_years(seconds);///
     int month = get_month(seconds);
     int day = get_day(seconds);
     int hours = get_hours(seconds);
