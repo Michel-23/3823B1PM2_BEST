@@ -1,25 +1,32 @@
 int get_years(int seconds) {
-    return 0; // Not implementation
+    seconds=seconds/32140800;
+    return seconds+1970; 
 }
 
 int get_month(int seconds) {
-    return 0; // Not implementation
+    seconds=(seconds/86400)%372;
+    seconds=seconds/31;
+    return seconds;
 }
 
 int get_day(int seconds) {
-    return 0; // Not implementation
+    seconds=(seconds/86400)%31;
+    return seconds; 
 }
 
 int get_hours(int seconds) {
-    return 0; // Not implementation
+    seconds=(seconds/3600)%24;
+    return seconds;
 }
 
 int get_minutes(int seconds) {
-    return 0; // Not implementation
+    seconds=(seconds/60)%60;
+    return seconds; 
 }
 
 int get_seconds(int seconds) {
-    return 0; // Not implementation
+    seconds=seconds%60;
+    return seconds; 
 }
 
 
@@ -30,5 +37,7 @@ int get_magical_value(int seconds) {
     int hours = get_hours(seconds);
     int minutes = get_minutes(seconds);
     int second = get_seconds(seconds);
-    return 0; // Not implementation
+    int otv;
+    otv = ((year+month)/(1+day+second))*((year+month)/(1+day+second)) + ((minutes+(minutes/(1+hours)))/(1+hours));
+    return otv;
 }
