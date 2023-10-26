@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 unsigned char max_byte(unsigned short x){
     int a[8]={0,0,0,0,0,0,0,0};
     for (int i=7;i>=0;i--){
@@ -9,4 +10,8 @@ unsigned char max_byte(unsigned short x){
     x2=a[4]*2*2*2+a[5]*2*2+a[6]*2+a[7];
     if (x1>x2) return x1;
     else return x2;
+=======
+unsigned char max_byte(unsigned short number) {
+    return 0; // Not implementation
+>>>>>>> bc5aec3bc96320b25e727767eda9d9f4819aa9eb
 }
