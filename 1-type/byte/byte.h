@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-unsigned char max_byte(unsigned short x){
-    int a[8]={0,0,0,0,0,0,0,0};
-    for (int i=7;i>=0;i--){
-        a[i]=x%2;
-        x/=2;
-    }
-    int x1,x2;
-    x1=a[0]*2*2*2+a[1]*2*2+a[2]*2+a[3];
-    x2=a[4]*2*2*2+a[5]*2*2+a[6]*2+a[7];
-    if (x1>x2) return x1;
-    else return x2;
-=======
-unsigned char max_byte(unsigned short number) {
-    return 0; // Not implementation
->>>>>>> bc5aec3bc96320b25e727767eda9d9f4819aa9eb
+unsigned char max_byte(unsigned short x) {
+    unsigned char b = (unsigned char)x;
+    unsigned char c = (unsigned char)(x >> 8);
+    if (b > c) return b;
+    else return c;
 }
