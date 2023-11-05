@@ -27,7 +27,7 @@ char count_max_digit(long long int number){
         if (chislo == max){
             c++;
     }
-    del = del / 10;
+    del = del/10;
     }
 
     return c;
