@@ -7,5 +7,6 @@ int* find_even(int* arr, int size){
             return &arr[i];
         }
     }
+    
     return NULL;
 }

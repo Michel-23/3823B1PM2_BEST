@@ -18,5 +18,6 @@ int calcsize(void* memory){
     }
     c=b-a;
     c=c+b;
+    
     return c;
 }

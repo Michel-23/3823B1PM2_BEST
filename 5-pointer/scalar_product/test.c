@@ -23,12 +23,12 @@ void test_scalar_product() {
 
 
 
-    //TEST_ASSERT(scalar_product(a1, b1, sizeof(a1)/sizeof(int)) == 0);
-    //TEST_ASSERT(scalar_product(a2, b2, sizeof(a2)/sizeof(int)) == 90);
+    TEST_ASSERT(scalar_product(a1, b1, sizeof(a1)/sizeof(int)) == 0);
+    TEST_ASSERT(scalar_product(a2, b2, sizeof(a2)/sizeof(int)) == 90);
     TEST_ASSERT(scalar_product(a3, b3, sizeof(a3)/sizeof(int)) == 61);
     TEST_ASSERT(scalar_product(a4, b4, sizeof(a4)/sizeof(int)) == 180);
     TEST_ASSERT(scalar_product(a5, b5, sizeof(a5)/sizeof(int)) == 180);
-    TEST_ASSERT(scalar_product(a6, b6, sizeof(a6)/sizeof(int)) == 0);
+    TEST_ASSERT(scalar_product(a6, b6, sizeof(a6)/sizeof(int)) == 90);
 
 }
 

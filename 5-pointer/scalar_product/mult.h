@@ -2,23 +2,20 @@
 #include <math.h>
 
 int scalar_product(int* vec1, int* vec2, int size){
+    double pi=3.1415;
     int ab=0;
-    int mod_a=0;
-    int mod_b=0;
-    int mod_a_mod_b=0;
-    int otv=0;
+    double len_a=0.0;
+    double len_b=0.0;
+    double len_a_len_b=0.0;
+    double otv=0.0;
     for (int i=0;i<size;i++){
-        for (int j=0;j<size;j++){
-            printf("%d",vec1[i]);
-            ab+=vec1[i]*vec2[j];
-            mod_a+=sqrt(pow(i,2));
-            mod_b+=sqrt(pow(j,2));
-        }
+        ab+=vec1[i]*vec2[i];
+        len_a+=vec1[i]*vec1[i];
+        len_b+=vec2[i]*vec2[i];
     }
-    //printf("%d\n",ab);
-    mod_a_mod_b=mod_a+mod_b;
-    otv=ab/mod_a_mod_b;
+    len_a_len_b=sqrt(len_a * len_b);
+    otv=ab/len_a_len_b;
     otv=acos(otv);
-    //printf("%d\n",otv);
-    return otv;
+    otv=otv*180/pi;
+    return (int)otv;
 }
