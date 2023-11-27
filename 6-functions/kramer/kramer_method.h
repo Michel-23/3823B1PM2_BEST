@@ -1,18 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
-double delmat(int* matrix, int* vector, int size, int rasp) { // делает новые определители
-     int sq = sqrt(size); // 4->2 9->3
-     int mat[size]; // создание нового массива
-
-     for (int i = 0; i < size; i++){
-          mat[i] = matrix[i]; // присваивание начений из matrix
-     }
-
-     for (int i = 0; i < sq; i++) { // 
-          mat[rasp /*номер столбца*/+sq*i] = vector[i]; // сама замена поэлементно 
-     }
-
+double delmat(int* mat, int size) {
      if (size == 4)
           return mat[0] * mat[3] - mat[1] * mat[2];
      if (size == 9)
@@ -21,20 +11,38 @@ double delmat(int* matrix, int* vector, int size, int rasp) { // делает н
 
 double kramer_method(int* matrix, int* vector, int size){
      int del=0;
-     int sq = sqrt(size);
-
-     double x[] = {0,0,0,0};
-
-     if (size==4)
-          del = matrix[0] * matrix[3] - matrix[1] * matrix[2];
-     else
-          del = matrix[0]*matrix[4]*matrix[8]+ matrix[6]*matrix[1]*matrix[5] + matrix[3]*matrix[7]*matrix[2]-matrix[6]*matrix[4]*matrix[2]-matrix[0]*matrix[7]*matrix[5]-matrix[3]*matrix[1]*matrix[8];
-
-     for (int i = 0; i < sq; i++) {
-          x[i] = delmat(matrix, vector, size, i);
+     int sq = size*size;
+     
+     int* x = (int*) malloc(sq*sizeof(int));
+     for (int i=0;i<sq;i++){
+          x[i]=matrix[i];
      }
 
-     if (del != 0)
-          return (x[0]/del) + (x[1]/del) + (x[2]/del);
+     int* mat1 = (int*) malloc(sq*sizeof(int));
+     int* mat2 = (int*) malloc(sq*sizeof(int));
+     int* mat3 = (int*) malloc(sq*sizeof(int));
+
+     for (int g=0;g<sq;g++){
+          mat1[g] = matrix[g];
+          mat2[g] = matrix[g];
+          mat3[g] = matrix[g];
+     }
+
+     for (int g=0;g<size;g++){
+          mat1[g*size] = vector[g];
+          mat2[g*size+1] = vector[g];
+          mat3[g*size+2] = vector[g];
+     }
+
+     del = delmat(x, sq);
+
+     int del1=delmat(mat1, sq);
+     int del2=delmat(mat2, sq);
+     int del3=delmat(mat3, sq);
+
+     if (del != 0 && size==3)
+          return ((double)del1/ (double)del) + ((double)del2/ (double)del) + ((double)del3/ (double)del);
+     if (del != 0 && size==2)
+          return ((double)del1/ (double)del) + ((double)del2/ (double)del);
      return -1;
 }
