@@ -5,7 +5,7 @@ int nod(int first, int second){
         return -1;
     else if (first==second) 
         return first;
-    else{
+    else{ 
         int maxx=fmax(first,second);
         int minn=fmin(first,second);
         return nod(minn,maxx-minn);

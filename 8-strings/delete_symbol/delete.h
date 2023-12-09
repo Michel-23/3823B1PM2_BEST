@@ -8,7 +8,7 @@ void DelSymbol1(char *str, char sym){
     while (index<length){
         if (str[index] != sym){
             str[newIndex] = str[index];
-            newIndex++;
+            newIndex++; 
         }
         index++;
     }

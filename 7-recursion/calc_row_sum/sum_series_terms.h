@@ -1,7 +1,7 @@
 #include <math.h>
 
 double fun(int t, int k){
-    if (k == 1) return 1.0;
+    if (k == 1) return 1.0; 
     else if (t+1 == k) return 1.0/k;
     else{
         return 1.0/k + fun(t, k-1);
