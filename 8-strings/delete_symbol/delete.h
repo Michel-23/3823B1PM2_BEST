@@ -11,7 +11,7 @@ void DelSymbol1(char *str, char sym){
             newIndex++; 
         }
         index++;
-    }
+    } 
     str[newIndex] = '\0';
 }
 

@@ -4,7 +4,7 @@
 
 bool isDigit(char c) { // принимает символ c и возвращает true, если символ - цифра, иаче false
     return (c >= '0' && c <= '9');
-}
+} 
 
 int calculate_expression(char expression[]) { // принимает массив символов expression 
     int length = strlen(expression); // переменная для хранения длины строки 

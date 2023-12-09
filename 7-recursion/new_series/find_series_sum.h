@@ -5,7 +5,7 @@ double fun(int k){
         return 0.0;
     else {
         return (fun(k-1)+1.0)/k;
-    }
+    } 
 }
 
 double new(int k, int t, double count){
