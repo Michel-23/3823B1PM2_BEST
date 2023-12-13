@@ -17,7 +17,7 @@ int is_palindrom(char text[]) {
         if (text[i] != text[j] && (text[i] - 32 != text[j] && text[i] + 32 != text[j])) {
             return 0;
         }
-        i++;
+        i++; 
         j--;
     }
     return 1;

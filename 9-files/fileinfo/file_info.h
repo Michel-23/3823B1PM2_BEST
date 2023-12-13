@@ -1,7 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <string.h>
 
-unsigned int get_fileinfo(char filename[], unsigned int* abzac_num, unsigned int* num_word){
+unsigned int get_fileinfo(char filename[], unsigned int* abzac_num, unsigned int* num_word) {
+    FILE *file; // Объявление указателя на файл
+    file = fopen(filename, "r"); //открытие файла для чтения
 
-    return 0;
+    int abzac = 0; // переменная для подсчета абзацев
+    int slova = 0; // переменная для подсчета количества слов
+    int bytes = 0; // переменная для подсчета количества байт в файле
+    int simvol; // переменная для хранения символа из файла
+    int prev_simvol = ' '; // переменная для хранения предыдущего символа, начиная с пробела
+
+    while ((simvol = fgetc(file)) != EOF) { // начало цикла, который будет выполняться до конца файла
+        bytes++; // увеличение счетчика байт
+        if (simvol == '\n') { // если символ конца строки
+            abzac++; // увеличиваем количество абзацев
+        }
+        if (simvol == ' ' || simvol == '\n' || simvol == '\t') { // если у нас какой-то разрыв
+            if (prev_simvol != ' ' && prev_simvol != '\n' && prev_simvol != '\t') { // и предыдущий символ - не разрыв (конец слова)
+                slova++; // увеличиваем количество слов
+            }
+        }
+        prev_simvol = simvol; // предыдущий приравниваем текущему
+    }
+
+    if (prev_simvol != ' ' && prev_simvol != '\n' && prev_simvol != '\t') { // проверка последнего символа файла. Если он не какой-то разрыв
+        slova++; // увеличиваем кол-во слов
+    }
+
+    fclose(file); // закрываем файл
+    *abzac_num = abzac + 1; // присваиваем указателю значение кол-ва абзацев увеличиваем на 1, так как последний абзац не учитывается в цикле
+    *num_word = slova; // присваиваем указателю значение кол-ва слов
+    return bytes; // возвращаем количество байт в файле
 }
